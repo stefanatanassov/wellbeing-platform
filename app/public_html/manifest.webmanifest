@@ -1,0 +1,34 @@
+{
+  "name": "Shine Bright Card",
+  "short_name": "SB Card",
+  "description": "Student visit card access for Shine Bright Yoga.",
+  "start_url": "/student-dashboard.php?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f3f5ef",
+  "theme_color": "#6b816f",
+  "icons": [
+    {
+      "src": "/assets/app-icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/app-icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "My Cards",
+      "short_name": "Cards",
+      "url": "/student-dashboard.php?source=pwa"
+    },
+    {
+      "name": "Show QR",
+      "short_name": "QR",
+      "url": "/student-qr.php?source=pwa"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+# Runtime data and uploads
+shine-bright-runtime/
+app/shine-bright-runtime/
+
+# Config with secrets
+shine-bright-config.php
+app/shine-bright-config.php
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Deployment
+*.tar.gz
+*.zip
