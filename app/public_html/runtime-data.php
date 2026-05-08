@@ -869,7 +869,7 @@ function shine_bright_normalize_visit_pack(array $pack): array
         $normalized[$field] = is_string($value) ? trim($value) : $defaultValue;
     }
 
-    $seed = $normalized['id'] !== '' ? $normalized['id'] : ($normalized['title'] !== '' ? $normalized['title'] : 'visit-pack');
+    $seed = $normalized['id'] !== '' ? $normalized['id'] : ($normalized['title'] !== '' ? $normalized['title'] : 'visit-pack-' . gmdate('YmdHis') . '-' . substr(bin2hex(random_bytes(3)), 0, 6));
     $normalized['id'] = shine_bright_slugify($seed);
     $normalized['status'] = in_array($normalized['status'], ['active', 'cancelled'], true) ? $normalized['status'] : 'active';
     $normalized['used_visits'] = min($normalized['used_visits'], $normalized['total_visits']);

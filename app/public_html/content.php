@@ -662,7 +662,7 @@ function shine_bright_normalize_content_item(string $section, array $item): arra
             ? $normalized['title']
             : ($normalized['name'] !== ''
                 ? $normalized['name']
-                : ($normalized['quote'] !== '' ? $normalized['quote'] : $section)));
+                : ($normalized['quote'] !== '' ? $normalized['quote'] : $section . '-' . gmdate('YmdHis'))));
     $normalized['id'] = shine_bright_slugify($seed);
 
     if ($section === 'classes') {

@@ -731,8 +731,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $normalized = shine_bright_normalize_visit_pack($payload);
             $existingTarget = shine_bright_find_record_by_id($packs, $normalized['id']);
             if ($existingTarget && $originalPackId !== $normalized['id']) {
-                $message = sb_admin_text($selectedLang, 'Another visit card already uses this id.');
-            } else {
+                if ($originalPackId === '') {
+                    $attempt = 0;
+                    do {
+                        $attempt++;
+                        $payload['id'] = $normalized['id'] . '-' . gmdate('His') . '-' . bin2hex(random_bytes(2));
+                        $normalized = shine_bright_normalize_visit_pack($payload);
+                    } while (shine_bright_find_record_by_id($packs, $normalized['id']) && $attempt < 5);
+                } else {
+                    $message = sb_admin_text($selectedLang, 'Another visit card already uses this id.');
+                }
+            }
+            if ($message === '') {
                 $wasUpdate = $originalPackId !== '' || $existingTarget !== null;
                 if ($originalPackId !== '' && $originalPackId !== $normalized['id']) {
                     shine_bright_delete_visit_pack($packs, $originalPackId);
